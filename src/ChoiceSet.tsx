@@ -3,7 +3,7 @@ import { capitalize } from './App';
 import { Berries, Berry, BerryActionSort } from './CLData/Berries';
 import { ItemCategory, ItemSlot, Wardrobe, WardrobeRules } from './CLData/Clothes/Wardrobe';
 import { CharacterAppearance, differentAppearance } from './CLStyleLib/CharacterAppearance';
-import { differentItemColors, Item } from './CLStyleLib/Item';
+import { differentItemColors, Item, ItemAttributes } from './CLStyleLib/Item';
 import { Icon } from './ReactComponents/Icon';
 
 interface ItemChoiceProps {
@@ -172,7 +172,7 @@ export class ChoiceSet extends Component<ChoiceSetProps> {
                         ];
                     })}
                 </ul>
-                {WardrobeRules[this.props.slot].colorable ? <BerryGrid {...this.props}></BerryGrid> : <></>}
+                {WardrobeRules[this.props.slot].colorable && !this.props.appearance.wornItems.shirt?.attributes.lockedColors ? <BerryGrid {...this.props}></BerryGrid> : <></>}
             </details>
         );
     }
